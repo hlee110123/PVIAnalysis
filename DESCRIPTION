@@ -1,0 +1,14 @@
+Package: PVIAnalysis
+Title: Analysis of Peripheral Vascular Interventions
+Version: 0.1.0
+Description: This package performs cohort generation, data extraction, and statistical analysis for comparing outcomes between early and non-early PVI patient cohorts.
+Authors@R: person(given = "hlee", family = "hlee", email = "hlee110123@gmail.com", role = c("aut", "cre"))
+Maintainer: hlee <hlee110123@gmail.com>
+License: MIT + file LICENSE
+Imports: CohortGenerator, DatabaseConnector, readr
+Suggests: knitr, dplyr, stats, broom, rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 7.3.2
+NeedsCompilation: no
+Packaged: 2025-04-08 21:52:34 UTC; idies
+Author: hlee hlee [aut, cre]

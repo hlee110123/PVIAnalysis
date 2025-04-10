@@ -1,0 +1,55 @@
+---
+title: "PVI Analysis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{PVI Analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```
+library(PVIAnalysis)
+```
+
+## Usage Example
+
+```
+# Set up connection details
+connectionDetails <- DatabaseConnector::createConnectionDetails(
+  dbms = "sql server",
+  server = Sys.getenv("server"),
+  user = Sys.getenv("user"),
+  password = Sys.getenv("password"),
+  pathToDriver = "D:/pathToDriver"
+)
+
+# Generate cohorts
+generateCohorts(
+  connectionDetails = connectionDetails,
+  cdmDatabaseSchema = "your_cdm_schema",
+  cohortDatabaseSchema = "your_cohort_schema",
+  cohortTable = "your_cohort_table"
+)
+
+# Generate analysis data
+analysisData <- generateAnalysisData(
+  connectionDetails = connectionDetails,
+  cdmDatabaseSchema = "your_cdm_schema",
+  cohortDatabaseSchema = "your_cohort_schema",
+  cohortTable = "your_cohort_table"
+)
+
+# Analyze outcomes
+results <- analyzeOutcomes(analysisData)
+
+# Display results
+print(results)
+```
+```

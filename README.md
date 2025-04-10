@@ -1,4 +1,4 @@
-# PVIOutcomeAnalysis
+# PVIAnalysis
 PVIAnalysis is an R package for comparing outcomes between early and non-early Peripheral Vascular Intervention (PVI) using OMOP Common Data Model (CDM). This package enables reproducible research by encapsulating cohort definitions, data extraction, and statistical analysis.
 
 # Overview

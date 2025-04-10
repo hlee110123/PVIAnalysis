@@ -79,7 +79,7 @@ For more control, you can run each component separately:
 
 ## 1. Generate Cohorts
 ```r
-rcohortCounts <- generateCohorts(
+cohortCounts <- generateCohorts(
   connectionDetails = connectionDetails,
   cdmDatabaseSchema = cdmDatabaseSchema,
   cohortDatabaseSchema = cohortDatabaseSchema,
@@ -91,7 +91,7 @@ rcohortCounts <- generateCohorts(
 
 ## 2. Extract Outcome Data
 ```r
-routcomeData <- getOutcomeData(
+outcomeData <- getOutcomeData(
   connectionDetails = connectionDetails,
   cdmDatabaseSchema = cdmDatabaseSchema,
   cohortDatabaseSchema = cohortDatabaseSchema,
@@ -103,7 +103,7 @@ routcomeData <- getOutcomeData(
 
 ## 3. Analyze Outcomes
 ```r
-ranalysisResults <- analyzeOutcomes(
+analysisResults <- analyzeOutcomes(
   outcomeData = outcomeData,
   outputFolder = file.path(outputFolder, "analysis")
 )

@@ -87,13 +87,7 @@ analysisData <- generateAnalysisData(
 ## 6. Analyze Outcomes and Output to CSV:
 
 ```r
-analysisData <- generateAnalysisData(
-  connectionDetails = connectionDetails,
-  cdmDatabaseSchema = cdmDatabaseSchema,
-  cohortDatabaseSchema = cohortDatabaseSchema,
-  cohortTable = cohortTable
-)
+analyzeOutcomes(analysisData, outputFileName = file.path(outputFolder, "outcome_comparison.csv"))
 ```
 
-This will run the analysis and save the results to a CSV file named outcome_comparison.csv in the specified outputFolder.
 

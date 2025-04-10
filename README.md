@@ -36,83 +36,64 @@ This package requires:
 These dependencies will be automatically installed when installing the package.
 
 # How to run
-## Database Connection Setup
 
+## 1. Load the Package:
 ```r
 library(PVIAnalysis)
+```
 
+## 2. Set up Connection Details:
+```r
 # Connect to the database
 connectionDetails <- DatabaseConnector::createConnectionDetails(
   dbms = "sql server",
-  server = Sys.getenv("DB_SERVER"),
-  user = Sys.getenv("DB_USER"),
-  password = Sys.getenv("DB_PASSWORD"),
-  pathToDriver = Sys.getenv("JDBC_DRIVER_PATH")
-)
+  server = Sys.getenv("server"),
+  user = Sys.getenv("user"),
+  password = Sys.getenv("password"),
+  pathToDriver = "D:/pathToDriver")
 ```
 
-## Running the Complete Analysis
+## 3. Define Database Schemas and Table Names:
 
 ```r
-# Define schemas and output location
-cdmDatabaseSchema <- "your_cdm_schema"
-cohortDatabaseSchema <- "your_results_schema"
-cohortTable <- "your_cohortTable"
-outputFolder <- "~/PVIResults"
+cdmDatabaseSchema <- "your_cdm_schema"  # Replace with your CDM schema
+cohortDatabaseSchema <- "your_cohort_schema"  # Replace with your cohort schema
+cohortTable <- "your_cohort_table"  # Replace with your cohort table name
+outputFolder <- "D:/PVIAnalysisOutput"  # Replace with desired output folder
+```
 
-# Run the complete analysis pipeline
-results <- executePVIStudy(
+## 4. Generate Cohorts:
+
+```r
+generateCohorts(
   connectionDetails = connectionDetails,
   cdmDatabaseSchema = cdmDatabaseSchema,
   cohortDatabaseSchema = cohortDatabaseSchema,
-  cohortTable = cohortTable,
-  outputFolder = outputFolder,
-  createCohorts = TRUE  # Set to FALSE if cohorts already exist
+  cohortTable = cohortTable
 )
-
-# View results
-print(results$analysisResults)
 ```
 
-# Step-by-Step Analysis
-For more control, you can run each component separately:
+## 5. Generate Analysis Data:
 
-## 1. Generate Cohorts
 ```r
-cohortCounts <- generateCohorts(
+analysisData <- generateAnalysisData(
   connectionDetails = connectionDetails,
   cdmDatabaseSchema = cdmDatabaseSchema,
   cohortDatabaseSchema = cohortDatabaseSchema,
-  cohortTable = cohortTable,
-  outputFolder = file.path(outputFolder, "cohorts")
+  cohortTable = cohortTable
 )
 
 ```
+## 6. Analyze Outcomes and Output to CSV:
 
-## 2. Extract Outcome Data
 ```r
-outcomeData <- getOutcomeData(
+analysisData <- generateAnalysisData(
   connectionDetails = connectionDetails,
   cdmDatabaseSchema = cdmDatabaseSchema,
   cohortDatabaseSchema = cohortDatabaseSchema,
-  cohortTable = cohortTable,
-  outputFolder = file.path(outputFolder, "data")
+  cohortTable = cohortTable
 )
-
 ```
 
-## 3. Analyze Outcomes
-```r
-analysisResults <- analyzeOutcomes(
-  outcomeData = outcomeData,
-  outputFolder = file.path(outputFolder, "analysis")
-)
-
-# View results
-print(analysisResults)
-```
-# Output Files
-The analysis generates the following outputs:
-
-* Results table (CSV): [outputFolder]/analysis/outcome_comparison_table.csv
+This will run the analysis and save the results to a CSV file named outcome_comparison.csv in the specified outputFolder.
 

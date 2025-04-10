@@ -36,20 +36,8 @@ This package requires:
 These dependencies will be automatically installed when installing the package.
 
 # How to run
-# Database Connection Setup
-First, set up your database connection. Using environment variables is recommended for security:
+## Database Connection Setup
 
-```r
-# Create an .Renviron file to store credentials
-usethis::edit_r_environ()
-
-# Add these lines to your .Renviron file:
-# DB_SERVER=your_server
-# DB_USER=your_username
-# DB_PASSWORD=your_password
-# JDBC_DRIVER_PATH=path/to/jdbc/drivers
-```
-# DatabaseConnector:
 ```r
 library(PVIAnalysis)
 
@@ -63,7 +51,7 @@ connectionDetails <- DatabaseConnector::createConnectionDetails(
 )
 ```
 
-# Running the Complete Analysis
+## Running the Complete Analysis
 
 ```r
 # Define schemas and output location

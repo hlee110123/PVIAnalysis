@@ -49,6 +49,19 @@ usethis::edit_r_environ()
 # DB_PASSWORD=your_password
 # JDBC_DRIVER_PATH=path/to/jdbc/drivers
 ```
+# DatabaseConnector:
+```r
+library(PVIAnalysis)
+
+# Connect to the database
+connectionDetails <- DatabaseConnector::createConnectionDetails(
+  dbms = "sql server",
+  server = Sys.getenv("DB_SERVER"),
+  user = Sys.getenv("DB_USER"),
+  password = Sys.getenv("DB_PASSWORD"),
+  pathToDriver = Sys.getenv("JDBC_DRIVER_PATH")
+)
+```
 
 # Running the Complete Analysis
 
@@ -56,7 +69,7 @@ usethis::edit_r_environ()
 # Define schemas and output location
 cdmDatabaseSchema <- "your_cdm_schema"
 cohortDatabaseSchema <- "your_results_schema"
-cohortTable <- "pvi_cohort"
+cohortTable <- "your_cohortTable"
 outputFolder <- "~/PVIResults"
 
 # Run the complete analysis pipeline

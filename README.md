@@ -62,18 +62,7 @@ cohortTable <- "your_cohort_table"  # Replace with your cohort table name
 outputFolder <- "D:/PVIAnalysisOutput"  # Replace with desired output folder
 ```
 
-## 4. Generate Cohorts:
-
-```r
-generateCohorts(
-  connectionDetails = connectionDetails,
-  cdmDatabaseSchema = cdmDatabaseSchema,
-  cohortDatabaseSchema = cohortDatabaseSchema,
-  cohortTable = cohortTable
-)
-```
-
-## 5. Generate Analysis Data:
+## 4. Generate Analysis Data:
 
 ```r
 analysisData <- generateAnalysisData(
@@ -84,7 +73,7 @@ analysisData <- generateAnalysisData(
 )
 
 ```
-## 6. Analyze Outcomes and Output to CSV:
+## 5. Analyze Outcomes and Output to CSV:
 
 ```r
 analyzeOutcomes(analysisData, outputFileName = file.path(outputFolder, "outcome_comparison.csv"))
